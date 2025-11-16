@@ -12,7 +12,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     environment:
-      name: test-pypi # Test environment !
+      name: testpypi # Test environment !
     permissions:
       id-token: write
       contents: read
