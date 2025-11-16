@@ -1,4 +1,4 @@
-name: "Publish"
+name: "Publish testpypi"
 
 on:
   # push:
@@ -24,4 +24,4 @@ jobs:
       - name: Build
         run: uv build
       - name: Publish
-        run: uv publish
+        run: uv publish --index testpypi
