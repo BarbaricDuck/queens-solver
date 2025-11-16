@@ -5,7 +5,8 @@ on:
   #   tags:
   #     # Publish on any tag starting with a `v`, e.g., v0.1.0
   #     - v*
-  workflow_dispatch
+  pull_request: # Or use workflow_dispatch: for a manual button
+    branches: [ main ]
     
 jobs:
   run:
