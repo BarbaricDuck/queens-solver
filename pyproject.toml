@@ -1,8 +1,11 @@
 [project]
 name = "queens-solver"
 version = "0.1.0"
-description = "Add your description here"
+description = "coming soon"
 readme = "README.md"
+authors = [
+    { name = "Benjamin Groves", email = "benjaminjgroves@gmail.com" }
+]
 requires-python = ">=3.14"
 dependencies = []
 
