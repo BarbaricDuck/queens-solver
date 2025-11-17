@@ -10,7 +10,7 @@ requires-python = ">=3.14"
 dependencies = []
 
 [project.scripts]
-queens-solver = "queens_solver:main"
+queens-solver = "queens_solver.main:main"
 
 [build-system]
 requires = ["uv_build>=0.9.9,<0.10.0"]
