@@ -2,7 +2,7 @@ import math
 import seaborn as sns
 from dataclasses import dataclass
 from enum import Enum
-from colored import Fore
+from colored import Fore, Style
 
 class SquareState(Enum):
     """
@@ -48,17 +48,25 @@ class Board:
         lines = []
         for n in range(self.N):
             line = [
-                f"{self.colors[square.region]}{square.state.value}"
+                f"{self.colors[square.region]}{square.state.value}{Style.reset}"
                 for square in self.squares[n]
             ]
             lines.append(" ".join(line))
         return "\n".join(lines)
 
+    def in_bounds(self, row: int, col: int) -> bool:
+        """
+        Check if a given row and column is inside the board
+        """
+        if (0 <= row < self.N and 0 <= col < self.N):
+            return True
+        return False
+
     def get_square(self, row: int, col: int) -> Square:
         """
         Get the square at the given row and column
         """
-        if not (0 <= row < self.N and 0 <= col < self.N):
+        if not self.in_bounds(row, col):
             raise IndexError(
                 f"({row}, {col}) out of bounds for {self.N}x{self.N} board"
             )
@@ -82,7 +90,7 @@ def board_parser(board_string: str) -> Board:
         board = Board(N)
         for i in range(N):
             for j in range(N):
-                board.get_square(i, j).region = int(cells[N * i + j])
+                board.squares[i][j].region = int(cells[N * i + j])
     except ValueError as e:
         raise ValueError(
             f"Invalid region value in board string: {e}"
